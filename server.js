@@ -37,17 +37,18 @@ app.get('/api/transactions', (req, res) => {
 
 // Add a transaction
 app.post('/api/transactions', (req, res) => {
-    const { text, amount } = req.body;
+    const { text, amount, category } = req.body;
 
-    if (!text || !amount) {
-        return res.status(400).json({ error: 'Please provide text and amount' });
+    if (!text || !amount || !category) {
+        return res.status(400).json({ error: 'Please provide text, amount, and category' });
     }
 
     const transactions = readData();
     const newTransaction = {
         id: Date.now(),
         text,
-        amount: parseFloat(amount)
+        amount: parseFloat(amount),
+        category
     };
 
     transactions.push(newTransaction);

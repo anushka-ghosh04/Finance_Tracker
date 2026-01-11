@@ -8,5 +8,11 @@
     "id": 1768112963494,
     "text": "Mobile",
     "amount": -30526
+  },
+  {
+    "id": 1768139493350,
+    "text": "Pizza",
+    "amount": -678,
+    "category": "Food"
   }
 ]
