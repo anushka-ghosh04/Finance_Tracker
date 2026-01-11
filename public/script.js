@@ -5,6 +5,7 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
+const category = document.getElementById('category');
 
 // Fetch transactions from API
 async function getTransactions() {
@@ -29,7 +30,8 @@ async function addTransaction(e) {
 
     const transaction = {
         text: text.value,
-        amount: +amount.value
+        amount: +amount.value,
+        category: category.value
     };
 
     try {
@@ -98,7 +100,7 @@ function addTransactionDOM(transaction) {
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
 
     item.innerHTML = `
-        ${transaction.text} <span>${sign}${Math.abs(
+        ${transaction.text} <span>(${transaction.category || 'Other'})</span> <span>${sign}${Math.abs(
         transaction.amount
     )}</span> <button class="delete-btn" onclick="removeTransaction(${transaction.id
         })">x</button>
